@@ -61,7 +61,7 @@ public class Server {
 }
 ```
 
-ChatServer.java - Modified version of NumberServer from [Link](https://github.com/ucsd-cse15l-s24/wavelet) repo
+ChatServer.java - Modified version of NumberServer.java from [Link](https://github.com/ucsd-cse15l-s24/wavelet) repo
 ```
 import java.io.IOException;
 import java.net.URI;
@@ -115,8 +115,15 @@ class ChatServer {
     }
 }
 ```
+
+##First example of /add-message use
 ![Image](example2.jpg)
 ![Image](example1.jpg)
+
+In this example when the URL "http/localhost:4000/add-message?s=Joseph Robinet Biden&user=My Name Is" is put into the hotbar, first the handle method of ServerHttpHandler is run, which immediately attempts to the string variable ret to whatever String is returned by `handler.handleRequest(exchange.getRequestURI())`. This block of code calls upon the `handleRequest` method which is found in ChatServer.java. The argument supplied to this method is `exchange.getRequestURI()`, which calls upon the `getRequestURI()` method on exchange which is equal to the URL from earlier. The `URI url` parameter for `handleRequest` is therefore set to the URL from earlier. The `getPath()` method is then run several times on `url` until the url is found to contain `"/add-message"` through the `contains` method. After this, the variable `String[] parameters` is initialized and using the `getQuery()` and `split` methods on the variable `url`, the string array ends up containing the strings `"s=Joseph Robinet Biden"` and `"user=My Name Is"`. Each of these strings are then split into two and stored in the `message` and `user` string arrays so that `message` contains the strings `"s"` and `"Joseph Robinet Biden"` and `user` contains the strings `"user"` and `"My Name Is"`. After a quick test to ensure that `message` contains `"s"` in its 0th index and `user` contains `"user"` in its 0th index using the equals method, we then update the variable `messages` which was initialized to `""` at the creation of the server to `"My Name Is: Joseph Robinet Biden"`. This string is returned so that the variable `ret` in the `handle` method of Server.java is set equal to `"My Name Is: Joseph Robinet Biden"` as opposed to `""`. The method `sendResponseHeaders` is then called as `exchange.sendResponseHeaders(200, ret.getBytes().length);`, which sends a response back to the user on the webpage. We then upate the webpage with the variable `OutputStream os` and calling the methods `getResponseBody()`, `write(ret.getBytes())`, and `close()` to update the web server with the information contained in `ret`, updating the web server to include the message "My Name Is: Joseph Robinet Biden".
+
+
+##Second example of /add-message use
 ![Image](example3.jpg)
 ![Image](example4.jpg)
 
