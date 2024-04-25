@@ -132,13 +132,15 @@ In this example when the URL "http/localhost:4000/add-message?s=no%20your%20not&
 # Part 2 - SSH commands
 ## `ls` run with absolute path to private key on my computer's command line
 ![Image](example5.jpg)
+
 ## `ls` run with absolute path to public key on the ieng6 machine
 ![Image](example6.jpg)
+
 ## Signing into my ieng6 account without needing to provide a password
 ![Image](example7.jpg)
 
 # Part 3 - Something I've learned in lab that I didn't know before
-
+Pretty much everything I've learned in lab2 and lab3 has been new information to me. In particular, I had no idea that there are systems out there which use private and public keys which can be found in your personal computer. I figured that these sorts of keys would be stored online or in a remote server or otherwise be inaccessible from a personal computer. I also had no idea that computers could run their own local servers.
 
 
 
