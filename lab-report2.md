@@ -1,5 +1,10 @@
-this is a lab report
+# Introduction
+Hello, I'm Nathaniel Petersen, PID A17832207, and this page will explore the webserver "ChatServer", SSH keys and some personal insights I've gained from the week 2 and 3 CSE15L labs.
 
+# Part 1 - ChatServer
+## Code for ChatServer
+
+Server.java - Direct copy of Server.java from [Link](https://github.com/ucsd-cse15l-s24/wavelet) repo
 ```
 // A simple web server using Java's built-in HttpServer
 
@@ -56,9 +61,7 @@ public class Server {
 }
 ```
 
-Some descriptive stuff over here
-
-
+ChatServer.java - Modified version of NumberServer from [Link](https://github.com/ucsd-cse15l-s24/wavelet) repo
 ```
 import java.io.IOException;
 import java.net.URI;
@@ -70,6 +73,10 @@ class Handler implements URLHandler {
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
             return messages;
+        }
+        else if(url.getPath().equals("/remove")){
+            messages = "";
+            return "Messages deleted";
         } 
         else {
             if (url.getPath().contains("/add-message")) {
