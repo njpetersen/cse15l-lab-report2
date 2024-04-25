@@ -108,5 +108,8 @@ class ChatServer {
     }
 }
 ```
-![Image](example1.png)
+![Image](example2.jpg)
+![Image](example1.jpg)
+![Image](example3.jpg)
+![Image](example4.jpg)
 
