@@ -129,10 +129,15 @@ In this example when the URL "http/localhost:4000/add-message?s=Joseph Robinet B
 
 In this example when the URL "http/localhost:4000/add-message?s=no%20your%20not&user=john" is put into the hotbar, first the handle method of ServerHttpHandler is run, which immediately attempts to the string variable ret to whatever String is returned by `handler.handleRequest(exchange.getRequestURI())`. This block of code calls upon the `handleRequest` method which is found in ChatServer.java. The argument supplied to this method is `exchange.getRequestURI()`, which calls upon the `getRequestURI()` method on exchange which is equal to the URL from earlier. The `URI url` parameter for `handleRequest` is therefore set to the URL from earlier. The `getPath()` method is then run several times on `url` until the url is found to contain `"/add-message"` through the `contains` method. After this, the variable `String[] parameters` is initialized and using the `getQuery()` and `split` methods on the variable `url`, the string array ends up containing the strings `"s=no your not"` and `"user=john"`. Each of these strings are then split into two and stored in the `message` and `user` string arrays so that `message` contains the strings `"s"` and `"no your not"` and `user` contains the strings `"user"` and `"john"`. After a quick test to ensure that `message` contains `"s"` in its 0th index and `user` contains `"user"` in its 0th index using the equals method, we then update the variable `messages` which was previously set to `"Luigi: Hi im john\n"` at the creation of the server to `"Luigi: Hi im john\njohn: no your not"`. This string is returned so that the variable `ret` in the `handle` method of Server.java is set equal to `"Luigi: Hi im john\njohn: no your not"` as opposed to `"Luigi: Hi im john\n"`. The method `sendResponseHeaders` is then called as `exchange.sendResponseHeaders(200, ret.getBytes().length);`, which sends a response back to the user on the webpage. We then upate the webpage with the variable `OutputStream os` and calling the methods `getResponseBody()`, `write(ret.getBytes())`, and `close()` to update the web server with the information contained in `ret`, updating the web server to include the message "john: no your not" on a new line.
 
+#Part 2 - SSH commands
+##`ls` run with absolute path to private key on my computer's command line
 ![Image](example5.jpg)
+##`ls` run with absolute path to public key on the ieng6 machine
 ![Image](example6.jpg)
+##Signing into my ieng6 account without needing to provide a password
 ![Image](example7.jpg)
 
+#Part 3 - Something I've learned in lab that I didn't know before
 
 
 
